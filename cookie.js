@@ -12,6 +12,14 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
+function getCookie(name) {
+  const value = "; " + document.cookie;
+  let parts = value.split("; " + name + "=");
+  if (parts.length === 2) {
+    return parts.pop().split(";").shift();
+  }
+}
+
 // уcтанавливает cookie
 function setCookie(name, value, props) {
   props = props || {};
